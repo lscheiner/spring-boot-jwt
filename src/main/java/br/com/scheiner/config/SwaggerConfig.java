@@ -1,11 +1,10 @@
 package br.com.scheiner.config;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.google.common.collect.Lists;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -25,7 +24,6 @@ public class SwaggerConfig {
 	
     public static final String DEFAULT_INCLUDE_PATTERN = "/api/.*";
 
-
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
@@ -35,8 +33,8 @@ public class SwaggerConfig {
 				.build()
 				.useDefaultResponseMessages(false)
 				.apiInfo(apiInfo())
-			     .securityContexts(Lists.newArrayList(securityContext()))
-		         .securitySchemes(Lists.newArrayList(apiKey()));
+			     .securityContexts(Arrays.asList(securityContext())  )
+		         .securitySchemes(Arrays.asList(apiKey()));
 	}
 
 	private ApiInfo apiInfo() {
@@ -48,14 +46,16 @@ public class SwaggerConfig {
 	}
 
 	private SecurityContext securityContext() {
-		return SecurityContext.builder().securityReferences(defaultAuth())
-				.forPaths(PathSelectors.regex(DEFAULT_INCLUDE_PATTERN)).build();
+		return SecurityContext.builder()
+				.securityReferences(defaultAuth())
+				.operationSelector( oc -> oc.requestMappingPattern().matches(DEFAULT_INCLUDE_PATTERN))
+				.build();
 	}
 
 	List<SecurityReference> defaultAuth() {
 		AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
 		AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
 		authorizationScopes[0] = authorizationScope;
-		return Lists.newArrayList(new SecurityReference("JWT", authorizationScopes));
+		return Arrays.asList(new SecurityReference("JWT", authorizationScopes));
 	}
 }

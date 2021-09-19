@@ -2,7 +2,6 @@ package br.com.scheiner.controller.auth;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,15 +17,15 @@ import br.com.scheiner.controller.form.LoginForm;
 import br.com.scheiner.service.TokenService;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping(SecurityConstants.USER_LOGIN)
 public class AuthenticationController {
 
-	@Autowired
 	private AuthenticationManager authManager;
 
-	@Autowired
 	private TokenService tokenService;
 
 	@ApiResponses(value = {

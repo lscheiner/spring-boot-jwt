@@ -27,6 +27,6 @@ public class LoginForm {
 	private String password;
 	
 	public UsernamePasswordAuthenticationToken convert() {
-		return new UsernamePasswordAuthenticationToken(username, password);
+		return new UsernamePasswordAuthenticationToken(this.username, this.password);
 	}
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,11 +20,12 @@ import br.com.scheiner.utils.UrlUtils;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.AllArgsConstructor;
 
 @RestController
+@AllArgsConstructor
 public class UserController {
 
-	@Autowired
 	private UserServices userServices;
 
 	@ApiOperation(value = "Criação de usuário")
@@ -34,6 +34,7 @@ public class UserController {
 		    @ApiResponse(code = 400, message = "Erro na validação"),
 		    @ApiResponse(code = 500, message = "Erro genérico"),
 	})
+	
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping(SecurityConstants.USER_API)
 	public ResponseEntity<String> createUser(@RequestBody @Valid UserForm userForm) {

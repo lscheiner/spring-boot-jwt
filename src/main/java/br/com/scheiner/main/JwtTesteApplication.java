@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class JwtTesteApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JwtTesteApplication.class, args);
+		SpringApplication.run(JwtTesteApplication.class);
 	}
 
 }
