@@ -3,6 +3,9 @@ language: java
 jdk:
   - openjdk11
   
+before_install:
+  - chmod +x mvnw
+  
 cache:
   directories:
   - $HOME/.m2
