@@ -15,6 +15,6 @@ deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
   edge: true 
-  app: jwt-leandro
+  app: jwt-scheiner
   on:
       branch: main
