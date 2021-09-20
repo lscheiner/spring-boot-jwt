@@ -18,4 +18,5 @@ deploy:
   app: jwt-scheiner
   on:
       branch: main
-      jdk: 11
+      jdk: 
+       - openjdk11
