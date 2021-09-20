@@ -9,3 +9,12 @@ before_install:
 cache:
   directories:
   - $HOME/.m2
+ 
+ # Definir o Deploy no Heroku
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  edge: true 
+  app: jwt-leandro
+  on:
+      branch: main
