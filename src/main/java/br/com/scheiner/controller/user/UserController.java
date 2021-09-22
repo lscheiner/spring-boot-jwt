@@ -31,8 +31,8 @@ public class UserController {
 	@ApiOperation(value = "Criação de usuário")
 	@ApiResponses(value = {
 		    @ApiResponse(code = 201, message = "Usuário criado com sucesso"),
-		    @ApiResponse(code = 400, message = "Erro na validação"),
-		    @ApiResponse(code = 500, message = "Erro genérico"),
+		    @ApiResponse(code = 400, message = "Erro de validação"),
+		    @ApiResponse(code = 500, message = "Erro interno")
 	})
 	
 	@ResponseStatus(code = HttpStatus.CREATED)
@@ -43,11 +43,11 @@ public class UserController {
 	    return ResponseEntity.created(UrlUtils.createUrl(user.getId())).build();	
 	 }
 
-	@ApiOperation(value = "Busca usuários")
+	@ApiOperation(value = "Lista todos os usuários")
 	@ApiResponses(value = {
 		    @ApiResponse(code = 200, message = "Lista Usuários"),
 		    @ApiResponse(code = 403, message = "Acesso negado"),
-		    @ApiResponse(code = 500, message = "Erro genérico"),
+		    @ApiResponse(code = 500, message = "Erro interno"),
 	})
 	@ResponseStatus(code = HttpStatus.OK)
 	@GetMapping(SecurityConstants.USER_API)
