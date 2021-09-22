@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.scheiner.config.SecurityConstants;
 import br.com.scheiner.controller.form.LoginForm;
 import br.com.scheiner.service.TokenService;
+import br.com.scheiner.swagger.annotation.CodeLangs;
+import br.com.scheiner.swagger.annotation.CodeSample;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.Extension;
-import io.swagger.annotations.ExtensionProperty;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -31,12 +31,15 @@ public class AuthenticationController {
 
 	private TokenService tokenService;
 
-	@ApiOperation(value = "Autentica",
-		    extensions = @Extension( name = "codeSamples", properties = {
-		        @ExtensionProperty(name = "JavaScript", value = "console.log('Hello World');"),
-		        @ExtensionProperty(name = "Java", value = "System.out.println('Hello World');"),
-		    })
-		)
+	
+	 @CodeSample(langs = {
+	            @CodeLangs(lang = "Java", source= "System.out.println(\"TESTE\");"),
+	            @CodeLangs(lang = "JavaScript", source= "var http = new XMLHttpRequest();\n" +
+	                    "http.open('GET', 'http://localhost:8080/api', false);\n" +
+	                    "http.send();\n" +
+	                    "console.log(http.responseText);"),
+	    })
+	@ApiOperation(value = "Autentica")
 	@ApiResponses(value = {
 		    @ApiResponse(code = 200, message = "Login com sucesso"),
 		    @ApiResponse(code = 400, message = "Erro de validação"),
