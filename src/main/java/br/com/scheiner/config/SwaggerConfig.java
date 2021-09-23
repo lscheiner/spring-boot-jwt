@@ -38,11 +38,11 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("TESTE JWT COM SWAGGER").version("1.0.0").build();
+		return new ApiInfoBuilder().title("JWT SWAGGER").version("1.0.0").build();
 	}
 
 	private ApiKey apiKey() {
-		return new ApiKey("JWT", SecurityConstants.HEADER_STRING, "header");
+		return new ApiKey("Bearer", SecurityConstants.HEADER_STRING, "header");
 	}
 
 	private SecurityContext securityContext() {
@@ -56,6 +56,6 @@ public class SwaggerConfig {
 		AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
 		AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
 		authorizationScopes[0] = authorizationScope;
-		return Arrays.asList(new SecurityReference("JWT", authorizationScopes));
+		return Arrays.asList(new SecurityReference("Bearer", authorizationScopes));
 	}
 }

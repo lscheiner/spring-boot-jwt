@@ -17,6 +17,7 @@ import br.com.scheiner.controller.form.LoginForm;
 import br.com.scheiner.service.TokenService;
 import br.com.scheiner.swagger.annotation.CodeLangs;
 import br.com.scheiner.swagger.annotation.CodeSample;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -25,12 +26,12 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RestController
 @RequestMapping(SecurityConstants.USER_LOGIN)
+@Api(tags = "auth")
 public class AuthenticationController {
 
 	private AuthenticationManager authManager;
 
 	private TokenService tokenService;
-
 	
 	 @CodeSample(langs = {
 	            @CodeLangs(lang = "Java", source= "System.out.println(\"TESTE\");"),

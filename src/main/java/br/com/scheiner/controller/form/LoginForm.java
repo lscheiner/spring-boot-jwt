@@ -4,16 +4,17 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
+@ApiModel(value="Login", description="form de login")
 public class LoginForm {
 
 	@ApiModelProperty(
 			  value = "Nome do usuário",
 			  name = "username",
-			  dataType = "String",
 			  example = "teste")
     @NotBlank(message = "Usuário obrigatório")
 	private String username;
@@ -21,7 +22,6 @@ public class LoginForm {
 	@ApiModelProperty(
 			  value = "Senha do usuário",
 			  name = "password",
-			  dataType = "String",
 			  example = "12345678")
 	@NotBlank(message = "Senha é obrigatória")
 	private String password;

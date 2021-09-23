@@ -38,6 +38,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET,  SecurityConstants.HEALTH_CHECK).permitAll()
                 .antMatchers(HttpMethod.GET, "/").permitAll()
                 .antMatchers("/v2/api-docs",  //configuração swagger
+                		"/v3/api-docs", //configuração swagger
                         "/configuration/ui",
                         "/swagger-resources/**",
                         "/configuration/security",
