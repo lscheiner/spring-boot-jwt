@@ -37,12 +37,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, SecurityConstants.USER_LOGIN).permitAll()
                 .antMatchers(HttpMethod.GET,  SecurityConstants.HEALTH_CHECK).permitAll()
                 .antMatchers(HttpMethod.GET, "/").permitAll()
-                .antMatchers("/v2/api-docs",  //configuração swagger
-                		"/v3/api-docs", //configuração swagger
-                        "/configuration/ui",
-                        "/swagger-resources/**",
-                        "/configuration/security",
+                .antMatchers(
+                		"/v3/api-docs/**",
                         "/swagger-ui/**",
+                        "/swagger-ui.html",
                         "/webjars/**",
                         "/favicon.ico").permitAll()
                 .anyRequest().authenticated()
